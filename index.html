@@ -1,5 +1,9 @@
 <head>
     <style>
+        body {
+            margin: 0;
+        }
+        
         .wordart {
             font-family: Arial, sans-serif;
             font-size: 5em;
@@ -41,46 +45,42 @@
     </style>
 </head>
 <body id="body">
+    <audio><source src="babedezbeep.mpeg" type="audio/mpeg" /></audio>
     <canvas id="canvas"></canvas>
     <div class="content">
         <div class="wordart radial">
             <h1 class="text">BABEDEZBEEP</h1>
         </div>
     </div>
-</body>
+    
+    <script>
+      async function rect(ctx, i, j) {
+        ctx.fillStyle = `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`;
+        ctx.fillRect(i, j, 10, 10);
+      }
 
-<style>
-    body {
-        margin: 0;
-    }
-</style>
+      function draw() {
+        const canvas = document.getElementById('canvas');
+        const w = window.innerWidth;
+        const h = window.innerHeight;
 
-<script>
-  async function rect(ctx, i, j) {
-    ctx.fillStyle = `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`;
-    ctx.fillRect(i, j, 10, 10);
-  }
+        canvas.width = w;
+        canvas.height = h;
 
-  function draw() {
-    const canvas = document.getElementById('canvas');
-    const w = window.innerWidth;
-    const h = window.innerHeight;
+        if (canvas.getContext) {
+          const ctx = canvas.getContext('2d');
 
-    canvas.width = w;
-    canvas.height = h;
-
-    if (canvas.getContext) {
-      const ctx = canvas.getContext('2d');
-
-      for (let i = 0; i < w; i += 10) {
-        for (let j = 0; j < h; j += 10) {
-          rect(ctx, i, j);
+          for (let i = 0; i < w; i += 10) {
+            for (let j = 0; j < h; j += 10) {
+              rect(ctx, i, j);
+            }
+          }
         }
       }
-    }
-  }
 
-   setInterval(() => {
-    draw();
-  }, 50)
-</script>
+       setInterval(() => {
+        draw();
+      }, 50)
+    </script>
+</body>
+
