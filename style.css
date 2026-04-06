@@ -1,0 +1,58 @@
+body, h1 {
+    margin: 0;
+}
+
+#canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+button {
+    background: transparent;
+    width: 0;
+    height: 162px;
+    border-color: transparent transparent transparent #ec8a39eb;
+    transition: border-color 100ms ease;
+    cursor: pointer;
+    border-style: solid;
+    border-width: 80px 0 80px 120px;
+}
+
+button.paused {
+    border-style: double;
+    border-width: 0 0 0 160px;
+}
+
+button:hover {
+    border-color: transparent transparent transparent #fcff28cf;
+}
+
+.wordart {
+    font-family: Arial, sans-serif;
+    font-size: 5em;
+    font-weight: bold;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.wordart.radial .text {
+    background: radial-gradient(ellipse at center, #fffa28 0%, #ec8a39 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: Impact, sans-serif;
+}
+
+.content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

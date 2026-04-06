@@ -1,82 +1,14 @@
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-    <style>
-        body, h1 {
-            margin: 0;
-        }
-        
-        audio {
-            display: none;
-        }
-
-        button {
-            border: 0;
-            background: transparent;
-            box-sizing: border-box;
-            width: 0;
-            height: 162px;
-
-            border-color: transparent transparent transparent #ec8a39eb;
-            transition: 100ms all ease;
-            cursor: pointer;
-            border-style: solid;
-            border-width: 80px 0 80px 120px;
-        }
-
-        button.paused {
-             border-style: double;
-             border-width: 0px 0 0px 160px;
-         }
-
-        button:hover {
-            border-color: transparent transparent transparent #fcff28cf;
-        }
-
-        
-        .wordart {
-            font-family: Arial, sans-serif;
-            font-size: 5em;
-            font-weight: bold;
-            position: relative;
-            z-index: 1;
-            display: inline-block;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        .wordart.radial .text {
-            background: #fffa28;
-            background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…BoZWlnaHQ9IjEwMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-            background: -moz-radial-gradient(center, ellipse cover, #fffa28 0%, #ec8a39 100%);
-            background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #fffa28), color-stop(100%, #ec8a39));
-            background: -webkit-radial-gradient(center, ellipse cover, #fffa28 0%, #ec8a39 100%);
-            background: -o-radial-gradient(center, ellipse cover, #fffa28 0%, #ec8a39 100%);
-            background: -ms-radial-gradient(center, ellipse cover, #fffa28 0%, #ec8a39 100%);
-            background: radial-gradient(ellipse at center, #fffa28 0%, #ec8a39 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffa28', endColorstr='#ec8a39', GradientType=1);
-            font-family: Impact, sans-serif;
-            font-weight: bold;
-        }
-
-        .content {
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            right: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BABEDEZBEEP</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body id="body">
+<body>
     <!-- MUSIK -->
-  
-    <audio id="player" controls loop><source src="babedezlong.mpeg" type="audio/mpeg" /></audio>
+    <audio id="player" loop><source src="babedezlong.mpeg" type="audio/mpeg" /></audio>
     <canvas id="canvas"></canvas>
     <div class="content">
         <div class="wordart radial">
@@ -84,47 +16,7 @@
         </div>
         <button id="con"></button>
     </div>
-    
-    <script>
 
-      const con = document.getElementById('con')
-      const player = document.getElementById('player');
-      con.addEventListener('click', () => {
-        con.classList.toggle('paused');
-        if (con.classList.contains('paused')) {
-            player.play();
-        } else {
-            player.pause();
-        }
-      });
-
-      async function rect(ctx, i, j) {
-        ctx.fillStyle = `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`;
-        ctx.fillRect(i, j, 10, 10);
-      }
-
-      function draw() {
-        const canvas = document.getElementById('canvas');
-        const w = window.innerWidth;
-        const h = window.innerHeight;
-
-        canvas.width = w;
-        canvas.height = h;
-
-        if (canvas.getContext) {
-          const ctx = canvas.getContext('2d');
-
-          for (let i = 0; i < w; i += 10) {
-            for (let j = 0; j < h; j += 10) {
-              rect(ctx, i, j);
-            }
-          }
-        }
-      }
-
-       setInterval(() => {
-        draw();
-      }, 200)
-    </script>
+    <script src="main.js" defer></script>
 </body>
-
+</html>
