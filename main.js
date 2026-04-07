@@ -1,3 +1,13 @@
+const modal = document.getElementById('modal');
+let animating = false;
+let interval = null;
+
+document.getElementById('modal-ok').addEventListener('click', () => {
+    modal.classList.add('hidden');
+    animating = true;
+    interval = setInterval(draw, 200);
+});
+
 const con = document.getElementById('con');
 const player = document.getElementById('player');
 con.addEventListener('click', () => {
@@ -27,5 +37,4 @@ function draw() {
 }
 
 resizeCanvas();
-window.addEventListener('resize', () => { resizeCanvas(); draw(); });
-setInterval(draw, 200);
+window.addEventListener('resize', () => { resizeCanvas(); if (animating) draw(); });
